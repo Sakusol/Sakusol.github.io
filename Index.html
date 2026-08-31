@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soraya Melina Yujra — Project Manager Junior</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12181f;
+    --panel:#1b222b;
+    --panel-2:#212a35;
+    --rule:#2b3541;
+    --paper:#e9e4d6;
+    --dim:#94a0ac;
+    --muted:#5f6b78;
+
+    --teal:#4e9e8c;
+    --gold:#c9a227;
+    --violet:#8e7cc3;
+    --rose:#c97b8b;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  h1,h2,h3{font-family:'Fraunces', serif; margin:0; font-weight:600; color:var(--paper);}
+
+  .wrap{max-width:980px; margin:0 auto; padding:0 32px;}
+
+  /* Top bar */
+  .topbar{
+    position:sticky; top:0; z-index:10;
+    background:rgba(18,24,31,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .topbar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:60px;
+  }
+  .topbar .brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem;}
+  .topbar nav{display:flex; gap:26px;}
+  .topbar nav a{font-size:0.88rem; color:var(--dim); text-decoration:none;}
+  .topbar nav a:hover{color:var(--paper);}
+  .topbar .cta{
+    font-size:0.85rem;
+    border:1px solid var(--rule);
+    padding:7px 14px;
+    border-radius:5px;
+    text-decoration:none;
+    color:var(--paper);
+  }
+  .topbar .cta:hover{border-color:var(--teal); color:var(--teal);}
+
+  @media (max-width:700px){
+    .topbar nav{display:none;}
+  }
+
+  /* Hero */
+  .hero{padding:64px 0 40px; border-bottom:1px solid var(--rule);}
+  .hero .kicker{
+    font-size:0.85rem; color:var(--teal); margin-bottom:14px;
+    font-family:'Fraunces', serif; font-style:italic;
+  }
+  .hero h1{font-size:2.6rem; line-height:1.08; max-width:14ch; letter-spacing:-0.01em;}
+  .hero p.blurb{
+    margin-top:20px; max-width:60ch; color:var(--dim); font-size:1.03rem; line-height:1.75;
+  }
+
+  .stats{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--rule);
+    margin-top:36px;
+    border:1px solid var(--rule);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .stat{background:var(--panel); padding:22px 20px;}
+  .stat .num{font-family:'Fraunces', serif; font-size:2rem; font-weight:600; color:var(--paper);}
+  .stat .label{font-size:0.82rem; color:var(--dim); margin-top:4px;}
+  @media (max-width:700px){ .stats{grid-template-columns:1fr;} .hero h1{font-size:2rem; max-width:none;} }
+
+  /* Section shell */
+  section{padding:56px 0; border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:8px;}
+  .section-head h2{font-size:1.5rem;}
+  .section-head .note{font-size:0.85rem; color:var(--muted);}
+
+  /* Board (kanban) for experience */
+  .board{display:flex; flex-direction:column; gap:18px;}
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--muted);
+    border-radius:8px;
+    padding:22px 24px;
+  }
+  .card.status-actual{border-left-color:var(--teal);}
+  .card.status-cerrado{border-left-color:var(--muted);}
+
+  .card-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;
+  }
+  .card-top h3{font-size:1.15rem;}
+  .card .org{font-size:0.9rem; color:var(--dim); margin-top:3px;}
+  .status-pill{
+    font-size:0.72rem;
+    padding:4px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+    border:1px solid var(--rule);
+    color:var(--dim);
+  }
+  .card.status-actual .status-pill{color:var(--teal); border-color:var(--teal);}
+
+  .card .dates{font-size:0.8rem; color:var(--muted); margin-top:10px;}
+
+  .tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;}
+  .tag{
+    font-size:0.74rem;
+    padding:4px 10px;
+    border-radius:5px;
+    background:var(--panel-2);
+    color:var(--dim);
+    border:1px solid var(--rule);
+  }
+
+  details{margin-top:16px;}
+  summary{
+    cursor:pointer;
+    font-size:0.85rem;
+    color:var(--gold);
+    list-style:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:"+"; font-family:'Fraunces', serif; font-size:1rem;}
+  details[open] summary::before{content:"–";}
+  details ul{margin:14px 0 0; padding-left:19px; color:var(--dim);}
+  details li{margin-bottom:9px; font-size:0.93rem; line-height:1.65;}
+  details li strong{color:var(--paper);}
+
+  /* Formación milestones */
+  .milestones{display:flex; flex-direction:column; gap:0;}
+  .milestone{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 0; border-bottom:1px solid var(--rule); gap:16px; flex-wrap:wrap;
+  }
+  .milestone:last-child{border-bottom:none;}
+  .milestone .degree{font-size:1rem; color:var(--paper);}
+  .milestone .school{font-size:0.84rem; color:var(--muted); margin-top:3px;}
+  .milestone .status-pill.en-curso{color:var(--teal); border-color:var(--teal);}
+  .milestone .status-pill.graduada{color:var(--gold); border-color:var(--gold);}
+
+  /* Stack board */
+  .stack-board{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  @media (max-width:800px){ .stack-board{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .stack-board{grid-template-columns:1fr;} }
+
+  .lane{background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:18px;}
+  .lane-title{
+    font-size:0.78rem; color:var(--dim); margin-bottom:14px;
+    padding-bottom:10px; border-bottom:2px solid var(--rule);
+  }
+  .lane.herramientas .lane-title{border-bottom-color:var(--teal);}
+  .lane.metodologias .lane-title{border-bottom-color:var(--gold);}
+  .lane.certificaciones .lane-title{border-bottom-color:var(--violet);}
+  .lane.idiomas .lane-title{border-bottom-color:var(--rose);}
+
+  .lane-item{
+    font-size:0.86rem; color:var(--paper);
+    padding:9px 0; border-bottom:1px solid var(--rule);
+  }
+  .lane-item:last-child{border-bottom:none;}
+  .lane-item .sub{display:block; font-size:0.76rem; color:var(--muted); margin-top:2px;}
+
+  /* Footer */
+  footer{padding:44px 0 60px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  footer .contacts{display:flex; gap:20px; flex-wrap:wrap;}
+  footer a{font-size:0.88rem; color:var(--dim); text-decoration:none;}
+  footer a:hover{color:var(--teal);}
+  footer p{color:var(--muted); font-size:0.8rem; margin:0;}
+
+  @media print{
+    body{background:#fff; color:#111;}
+    .topbar{position:static; background:#fff;}
+    .card, .lane, .stat{border-color:#ccc;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">Soraya Yujra</div>
+    <nav>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#formacion">Formación</a>
+      <a href="#stack">Stack</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="cta" href="mailto:soraya_yujra@hotmail.com">Contactar</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero" style="border-bottom:1px solid var(--rule);">
+    <div class="kicker">La Matanza, Buenos Aires</div>
+    <h1>Soraya Melina Yujra</h1>
+    <p class="blurb">
+      Project Manager Junior con perfil híbrido entre Ingeniería en Informática y gestión de proyectos.
+      Relevo procesos de negocio, formalizo requerimientos para equipos de desarrollo y coordino la
+      adaptación de sistemas ERP con metodologías ágiles.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">98%</div>
+        <div class="label">cumplimiento de plazos en gestión freelance</div>
+      </div>
+      <div class="stat">
+        <div class="num">3</div>
+        <div class="label">áreas coordinadas end-to-end: Logística, Ventas y Administración</div>
+      </div>
+      <div class="stat">
+        <div class="num">7</div>
+        <div class="label">certificaciones profesionales en gestión, diseño y datos</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+
+  <section id="trayectoria">
+    <div class="section-head">
+      <h2>Trayectoria</h2>
+      <div class="note">3 experiencias</div>
+    </div>
+
+    <div class="board">
+
+      <div class="card status-actual">
+        <div class="card-top">
+          <div>
+            <h3>Project Manager Junior</h3>
+            <div class="org">Attain SRL · Convenio institucional UNLaM</div>
+          </div>
+          <div class="status-pill">Feb 2025 – Ene 2026</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Odoo</span>
+          <span class="tag">Kaizen · 5S</span>
+          <span class="tag">ERP funcional</span>
+          <span class="tag">KPIs</span>
+          <span class="tag">Excel avanzado</span>
+          <span class="tag">IA generativa</span>
+        </div>
+        <details>
+          <summary>Ver detalle del rol</summary>
+          <ul>
+            <li><strong>Relevamiento y rediseño de procesos:</strong> relevé el flujo de negocio end-to-end junto a Logística, Ventas y Administración, elaborando un diagrama que mapea la conexión entre áreas y propone mejoras para reducir tiempos.</li>
+            <li><strong>Formalización de requerimientos:</strong> presenté el diagrama de procesos al equipo de desarrollo externo en reuniones quincenales, como base para adaptar Gescom Web a las necesidades reales de la empresa.</li>
+            <li><strong>Optimización de procesos:</strong> implementé Kaizen y 5S en Logística y Ventas, logrando una reducción drástica de cuellos de botella operativos.</li>
+            <li><strong>Análisis de rentabilidad:</strong> actualicé el Excel de rentabilidad de Attain SRL y su unidad de e-commerce (Vitta), detectando y reportando inconsistencias.</li>
+            <li><strong>KPIs:</strong> diseñé indicadores de gestión para detectar falencias operativas y proponer mejoras de rendimiento.</li>
+            <li><strong>Gestión de stakeholders:</strong> actué como nexo entre los clientes de Attain SRL y el equipo de desarrollo externo.</li>
+            <li><strong>E-commerce:</strong> coordiné campañas Display en Mercado Libre integrando IA generativa (Gemini) para activos visuales, con incremento medible en ROI y CTR.</li>
+            <li><strong>Documentación técnica:</strong> creé manuales de procedimiento y guías de procesos sectoriales para optimizar el onboarding.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="card status-actual">
+        <div class="card-top">
+          <div>
+            <h3>Investigadora I+D — Proyecto EdTech</h3>
+            <div class="org">Universidad Nacional de La Matanza</div>
+          </div>
+          <div class="status-pill">Ene 2025 – Actualidad</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Realidad aumentada</span>
+          <span class="tag">Gamificación</span>
+          <span class="tag">Publicaciones científicas</span>
+        </div>
+        <details>
+          <summary>Ver detalle del rol</summary>
+          <ul>
+            <li><strong>Innovación educativa:</strong> gestión y diseño de recursos tecnológicos basados en Realidad Aumentada y Gamificación aplicados a Matemática Discreta.</li>
+            <li><strong>Gestión de publicaciones:</strong> coordinación estratégica y metodológica para la presentación de avances en congresos y revistas científicas internacionales.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="card status-cerrado">
+        <div class="card-top">
+          <div>
+            <h3>Project &amp; Content Manager Freelance</h3>
+            <div class="org">Independiente</div>
+          </div>
+          <div class="status-pill">Ene 2017 – Feb 2025</div>
+        </div>
+        <div class="tags">
+          <span class="tag">Jira</span>
+          <span class="tag">Asana</span>
+          <span class="tag">Trello</span>
+          <span class="tag">Redes sociales</span>
+          <span class="tag">Métricas</span>
+        </div>
+        <details>
+          <summary>Ver detalle del rol</summary>
+          <ul>
+            <li><strong>Creación de contenido y redes sociales:</strong> desarrollé estrategias y gestioné redes para clientes de estética, salud, vinoteca digital, muebles, esports e indumentaria femenina, adaptando el enfoque a cada rubro.</li>
+            <li><strong>Gestión de entregas:</strong> alcancé un 98% de cumplimiento de plazos mediante planificación y seguimiento con Jira, Asana y Trello.</li>
+            <li><strong>Análisis de métricas:</strong> seguimiento de alcance, engagement y crecimiento para ajustar la estrategia de cada cliente.</li>
+          </ul>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="formacion">
+    <div class="section-head">
+      <h2>Formación académica</h2>
+    </div>
+    <div class="milestones">
+      <div class="milestone">
+        <div>
+          <div class="degree">Ingeniería en Informática</div>
+          <div class="school">Universidad Nacional de La Matanza (UNLaM)</div>
+        </div>
+        <div class="status-pill en-curso">En curso</div>
+      </div>
+      <div class="milestone">
+        <div>
+          <div class="degree">Lic. en Comunicación Social</div>
+          <div class="school">Universidad Nacional de La Matanza (UNLaM)</div>
+        </div>
+        <div class="status-pill graduada">Graduada</div>
+      </div>
+      <div class="milestone">
+        <div>
+          <div class="degree">Lic. en Relaciones Públicas</div>
+          <div class="school">Universidad Nacional de La Matanza (UNLaM)</div>
+        </div>
+        <div class="status-pill graduada">Graduada</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="section-head">
+      <h2>Stack y competencias</h2>
+    </div>
+    <div class="stack-board">
+
+      <div class="lane herramientas">
+        <div class="lane-title">Herramientas</div>
+        <div class="lane-item">Jira</div>
+        <div class="lane-item">Trello</div>
+        <div class="lane-item">Asana</div>
+        <div class="lane-item">Odoo</div>
+        <div class="lane-item">Power BI</div>
+        <div class="lane-item">Excel avanzado</div>
+        <div class="lane-item">SQL</div>
+        <div class="lane-item">Figma</div>
+        <div class="lane-item">Lenguaje C</div>
+      </div>
+
+      <div class="lane metodologias">
+        <div class="lane-title">Metodologías</div>
+        <div class="lane-item">Agile</div>
+        <div class="lane-item">Scrum</div>
+        <div class="lane-item">Kaizen</div>
+        <div class="lane-item">5S</div>
+        <div class="lane-item">Gestión de stakeholders</div>
+        <div class="lane-item">Relevamiento y análisis funcional</div>
+      </div>
+
+      <div class="lane certificaciones">
+        <div class="lane-title">Certificaciones</div>
+        <div class="lane-item">Power BI<span class="sub">Santander Open Academy</span></div>
+        <div class="lane-item">Fundamentos de Programación<span class="sub">Telefónica</span></div>
+        <div class="lane-item">Especialización UX/UI<span class="sub">Talento Tech</span></div>
+        <div class="lane-item">Diseño Gráfico Digital<span class="sub">BA Multiplica 2.0</span></div>
+        <div class="lane-item">Contenido para Redes Sociales<span class="sub">Academia BA Emprende Digital</span></div>
+        <div class="lane-item">Gestión de Proyectos e Inteligencia Emocional<span class="sub">BA Multiplica 2.0</span></div>
+        <div class="lane-item">Diseño Gráfico Vectorial<span class="sub">Federación Gráfica Bonaerense</span></div>
+      </div>
+
+      <div class="lane idiomas">
+        <div class="lane-title">Idiomas</div>
+        <div class="lane-item">Español<span class="sub">Nativo</span></div>
+        <div class="lane-item">Inglés<span class="sub">Nivel intermedio</span></div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="contacts">
+      <a href="mailto:soraya_yujra@hotmail.com">soraya_yujra@hotmail.com</a>
+      <a href="tel:+541167422411">(011) 6742-2411</a>
+      <a href="https://linkedin.com/in/soraya-yujra" target="_blank" rel="noopener">linkedin.com/in/soraya-yujra</a>
+    </div>
+    <p>Soraya Melina Yujra · La Matanza, Buenos Aires</p>
+  </div>
+</footer>
+
+</body>
+</html>

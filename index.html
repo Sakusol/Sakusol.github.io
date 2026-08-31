@@ -191,6 +191,26 @@
   .lane-item:last-child{border-bottom:none;}
   .lane-item .sub{display:block; font-size:0.76rem; color:var(--muted); margin-top:2px;}
 
+  /* Proyectos */
+  .projects{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media (max-width:700px){ .projects{grid-template-columns:1fr;} }
+
+  .project-card{
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-radius:8px;
+    padding:22px 24px;
+    text-decoration:none;
+    display:block;
+    transition:border-color .15s ease;
+  }
+  .project-card:hover{border-color:var(--teal);}
+  .project-card h3{font-size:1.05rem;}
+  .project-card .desc{font-size:0.87rem; color:var(--dim); margin-top:8px; line-height:1.6;}
+  .project-card .link-out{
+    font-size:0.78rem; color:var(--teal); margin-top:14px; display:block;
+  }
+
   /* Footer */
   footer{padding:44px 0 60px;}
   footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
@@ -213,6 +233,7 @@
     <div class="brand">Soraya Yujra</div>
     <nav>
       <a href="#trayectoria">Trayectoria</a>
+      <a href="#proyectos">Proyectos</a>
       <a href="#formacion">Formación</a>
       <a href="#stack">Stack</a>
       <a href="#contacto">Contacto</a>
@@ -226,9 +247,11 @@
     <div class="kicker">La Matanza, Buenos Aires</div>
     <h1>Soraya Melina Yujra</h1>
     <p class="blurb">
-      Project Manager Junior con perfil híbrido entre Ingeniería en Informática y gestión de proyectos.
-      Relevo procesos de negocio, formalizo requerimientos para equipos de desarrollo y coordino la
-      adaptación de sistemas ERP con metodologías ágiles.
+      Project Manager Junior con experiencia en optimización de procesos y transformación digital.
+      Perfil híbrido que combina la formación en Ingeniería en Informática con competencias en
+      gestión de proyectos, análisis funcional, relevamiento de procesos y comunicación estratégica.
+      Experiencia mapeando procesos de negocio, formalizando requerimientos para equipos de desarrollo
+      y participando en la adaptación de sistemas ERP con enfoque funcional y metodologías ágiles.
     </p>
 
     <div class="stats">
@@ -306,7 +329,7 @@
           <summary>Ver detalle del rol</summary>
           <ul>
             <li><strong>Innovación educativa:</strong> gestión y diseño de recursos tecnológicos basados en Realidad Aumentada y Gamificación aplicados a Matemática Discreta.</li>
-            <li><strong>Gestión de publicaciones:</strong> coordinación estratégica y metodológica para la presentación de avances en congresos y revistas científicas internacionales.</li>
+            <li><strong>Gestión de publicaciones:</strong> coordinación estratégica y metodológica para la presentación de avances en congresos y revistas científicas nacionales e internacionales.</li>
           </ul>
         </details>
       </div>
@@ -335,6 +358,28 @@
           </ul>
         </details>
       </div>
+
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="section-head">
+      <h2>Proyectos</h2>
+      <a href="https://github.com/Sakusol" target="_blank" rel="noopener" class="note" style="color:var(--teal); text-decoration:none;">Ver todo en GitHub →</a>
+    </div>
+    <div class="projects">
+
+      <a class="project-card" href="https://github.com/Sakusol/Programacion-Inicial-UNLaM" target="_blank" rel="noopener">
+        <h3>Programación Inicial — UNLaM</h3>
+        <div class="desc">Ejercicios en lenguaje C de la cursada de Programación Inicial: estructura secuencial y estructura de decisión.</div>
+        <span class="link-out">github.com/Sakusol/Programacion-Inicial-UNLaM ↗</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/Sakusol/Sakusol.github.io" target="_blank" rel="noopener">
+        <h3>Este sitio</h3>
+        <div class="desc">Código fuente de esta misma página, hecha en HTML y CSS y publicada con GitHub Pages.</div>
+        <span class="link-out">github.com/Sakusol/Sakusol.github.io ↗</span>
+      </a>
 
     </div>
   </section>
@@ -423,7 +468,6 @@
   <div class="wrap">
     <div class="contacts">
       <a href="mailto:soraya_yujra@hotmail.com">soraya_yujra@hotmail.com</a>
-      <a href="tel:+541167422411">(011) 6742-2411</a>
       <a href="https://linkedin.com/in/soraya-yujra" target="_blank" rel="noopener">linkedin.com/in/soraya-yujra</a>
     </div>
     <p>Soraya Melina Yujra · La Matanza, Buenos Aires</p>
